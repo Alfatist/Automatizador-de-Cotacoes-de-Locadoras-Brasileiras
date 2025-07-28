@@ -1,0 +1,23 @@
+.doc__back_button {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.doc__back_button:hover {
+  outline-style: solid;
+  outline-width: 6px;
+  outline-color: #e6f5e6;
+  background-color: #e6f5e6;
+}
+
+.doc__back_icon {
+  width: 28px;
+  height: 28px;
+  stroke: #333;
+}

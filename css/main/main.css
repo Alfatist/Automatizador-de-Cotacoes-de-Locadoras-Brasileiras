@@ -1,0 +1,14 @@
+@import url("./main__button.css");
+@import url("./main__link.css");
+@import url("./main__credit.css");
+@import url("./main__help_button.css");
+@import url("./main__version.css");
+
+.main {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0 10px 10px;
+}

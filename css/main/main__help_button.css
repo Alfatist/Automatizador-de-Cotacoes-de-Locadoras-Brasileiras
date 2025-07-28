@@ -1,0 +1,21 @@
+.main__help_button {
+  position: fixed;
+  color: white;
+  bottom: 7px;
+  right: 12px;
+  padding: 0 9px;
+  background-color: #228b22;
+  color: #ece9e9;
+  opacity: 0.6;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main__help_button:hover {
+  background-color: #1c6b1c;
+  transform: scale(1.05);
+}

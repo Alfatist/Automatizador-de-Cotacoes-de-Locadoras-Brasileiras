@@ -1,0 +1,16 @@
+@import url(./main/main.css);
+@import url(./doc/doc.css);
+@import url(./options/options.css);
+
+body {
+  margin: 0;
+  background-color: #ece9e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}

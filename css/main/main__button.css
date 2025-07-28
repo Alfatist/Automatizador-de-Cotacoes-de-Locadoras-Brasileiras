@@ -1,0 +1,26 @@
+.main__button {
+  margin: 20px;
+  flex-grow: 1;
+  padding: 15px 20px;
+  text-align: center;
+  background-color: forestgreen;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+}
+
+.main__button:hover {
+  background-color: #228b22; /* um tom mais escuro de verde */
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.main__button:active {
+  transform: scale(0.98);
+}

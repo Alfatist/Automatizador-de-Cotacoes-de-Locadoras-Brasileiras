@@ -1,0 +1,19 @@
+@import url("help_container__leave.css");
+
+.options__help_container {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  background-color: #ece9e9;
+  display: none;
+  overflow: auto;
+}
+
+#shouldShowHelp:checked ~ .options__help_container {
+  display: block;
+}

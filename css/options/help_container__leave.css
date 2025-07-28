@@ -1,0 +1,18 @@
+.help_container__leave {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 28px;
+  background: none;
+  color: #444;
+  cursor: pointer;
+  z-index: 10;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  font-weight: bold;
+}
+
+.help_container__leave:hover {
+  background-color: #e0e0e0;
+}

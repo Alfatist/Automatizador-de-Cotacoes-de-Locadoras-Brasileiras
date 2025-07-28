@@ -1,0 +1,50 @@
+@import url("./back_button.css");
+
+.doc {
+  position: relative;
+}
+
+.doc h1 {
+  font-size: 24px;
+  margin: 16px 0 20px;
+  text-align: center;
+  color: #333;
+}
+
+.doc details {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.doc summary {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  list-style: none;
+  position: relative;
+  padding-right: 20px;
+}
+
+.doc summary::after {
+  content: "▸";
+  position: absolute;
+  right: 0;
+  transition: transform 0.3s ease;
+}
+
+.doc details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.doc details p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}

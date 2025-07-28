@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/icons.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main class="main doc options">
+      <a href="./index.html" class="doc__back_button">
+        <svg
+          class="doc__back_icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="#333"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+      <h1>Configurações</h1>
+      <div id="options__feedback" class="options__feedback">
+        <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></i>
+        <span class="message">Configurações salvas com sucesso!</span>
+      </div>
+      <form action="#" id="options__form">
+        
+      </form>
+      <input type="checkbox" name="shouldShowHelp" id="shouldShowHelp" style="display: none" />
+
+      <label class="options__background_fade" aria-disabled="true" for="shouldShowHelp"></label>
+      <section class="options__help_container">
+        <label for="shouldShowHelp" class="help_container__leave" title="Fechar ajuda">&times;</label>
+        <h1>Opções</h1>
+
+        <details>
+          <summary>Como preencher filial?</summary>
+          <p>O campo de filial é separado em dois: empresa (esquerda) e filial (direita)</p>
+          <p>
+            Na esquerda, selecione a empresa alvo. À direita, o nome da filial de forma que seja a primeira no autocomplete do site.
+            <em>Se lembre que ele navega no site e coloca exatamente o texto informado.</em>
+          </p>
+
+          <p>
+            Por exemplo, se você quiser a agência da <em>localiza centro de duque de caxias</em>, você terá diversas opções. Mas perceba que, se o
+            campo for preenchido com: <br />
+            1. "caxias" - Será selecionado o Aeroporto Caxias do Sul <br />
+            <img src="./img/doc/caxiasInput.png" alt="Imagem demonstrando que a primeira opção no site da localiza é Caxias do Sul" />
+            <p> 2. "Duque" - Será selecionado a agência Carrefour Duque de Caxias <br />
+            <img src="./img/doc/duqueInput.png" alt="Imagem demonstrando que a primeira opção no site da localiza é Carrefour Duque de Caxias" /></p>
+            <p>
+            3. "centro Duque" - Será selecionado, por fim, o correto.
+            <img src="./img/doc/centroDuqueInput.png" alt="Imagem demonstrando que, desta vez, é a opção correta" />
+            </p>
+          </p>
+        </details>
+
+        <details>
+          <summary>Análise na planilha?</summary>
+          <p>Caso for selecionado, do lado das cotações, adicionará um campo de análise na planilha, contendo informações como grupos com maior diferença, a porcentagem e o valor.</p>
+          
+        </details>
+
+        <details>
+          <summary>Não incluir se Localiza não tiver?</summary>
+          <p>Caso for selecionado, será desconsiderado (das outras empresas) todos os grupos que a localiza não tem.</p>
+          
+        </details>
+      </section>
+    </main>
+    <script type="module" src="./js/options/script.js"></script>
+  </body>
+</html>

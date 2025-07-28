@@ -1,0 +1,74 @@
+@import url("./options__background_fade.css");
+@import url("./options__help_container.css");
+@import url("./options__feedback.css");
+
+.options select {
+  font-family: "icomoon";
+  font-size: 32px;
+  border: none;
+  outline: none;
+}
+
+.options option[value="movida"],
+select:has(> option[value="movida"]:checked) {
+  color: orange;
+}
+
+.options option[value="localiza"],
+select:has(> option[value="localiza"]:checked) {
+  color: forestgreen;
+}
+
+.options .local {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.options .local input {
+  font-size: 1.5em;
+  flex: 1;
+  width: 100%;
+}
+
+.options__checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 1em;
+}
+
+.options__checkboxes label {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  gap: 10px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+
+.options__checkboxes input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: forestgreen; /* cor da caixinha */
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: forestgreen;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form button[type="submit"]:hover {
+  background-color: #1c6b1c;
+  transform: scale(1.02);
+}

@@ -1,0 +1,39 @@
+.options__feedback {
+  position: fixed;
+  top: 1em;
+  right: 16px;
+  max-width: 220px;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: -999;
+}
+
+.options__feedback.show {
+  z-index: 999;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.options__feedback.success {
+  background-color: #28a745;
+}
+
+.options__feedback.error {
+  background-color: #dc3545;
+}
+
+.options__feedback svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}

@@ -1,0 +1,25 @@
+.main__credit {
+  font-size: 12px;
+  color: #777;
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__credit > * {
+  flex: 1;
+}
+
+.main__credit a {
+  color: #228b22;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.main__credit a:hover {
+  text-decoration: none;
+  color: #651c6b;
+}

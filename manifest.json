@@ -1,0 +1,13 @@
+{
+  "name": "Cotações Carro",
+  "description": "Pega cotações automaticamente por um browser!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting", "unlimitedStorage", "webNavigation", "storage", "browsingData", "nativeMessaging", "notifications"],
+  "action": { "default_popup": "index.html" },
+  "background": {
+    "service_worker": "./js/background.js",
+    "type": "module"
+  },
+  "host_permissions": ["https://www.localiza.com/*", "https://www.movida.com.br/*"]
+}

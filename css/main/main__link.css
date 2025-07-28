@@ -1,0 +1,36 @@
+.main__link {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.4em;
+  color: #228b22;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  cursor: pointer;
+}
+
+.main__link.hidden {
+  display: none;
+}
+
+.main__link:hover {
+  color: #1c6b1c;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.gear {
+  display: inline-block;
+}
+
+.main__link .gear {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
