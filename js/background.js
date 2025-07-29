@@ -8,6 +8,20 @@ chrome.runtime.onConnect.addListener((port) => {
   port.onMessage.addListener(scriptPrincipal);
 });
 
+chrome.notifications.onClicked.addListener((notificationId) => {
+  if (notificationId == "cotacoes-prontas") {
+    chrome.tabs.create(
+      {
+        url: chrome.runtime.getURL("/planilha.html"),
+      },
+      (tab) => {
+        // Opcional: enviar mensagem ao novo tab com dados
+        chrome.tabs.sendMessage(tab.id, { autorizado: true });
+      }
+    );
+  }
+});
+
 async function scriptPrincipal(message, sender, sendResponse) {
   if (message === "começar") {
     let filiais = await StorageService.getOptions();
@@ -18,11 +32,11 @@ async function scriptPrincipal(message, sender, sendResponse) {
     let cotationsFormatted = new cotationsFormatter(result.localizaCotacoes, result.movidaCotacoes);
     await StorageService.setCotationsFormatter(cotationsFormatted);
 
-    chrome.notifications.create("cotacoes-prontas ", {
+    chrome.notifications.create("cotacoes-prontas", {
       type: "basic",
-      iconUrl: "../img/localiza.png",
+      iconUrl: "/img/localiza.png",
       title: "Cotações salvas",
-      message: "Abra a extensão para pegar a planilha :)",
+      message: "Abra a extensão para pegar a planilha.\n\nOu então clique nesta notificação :)",
       priority: 2,
     });
   }

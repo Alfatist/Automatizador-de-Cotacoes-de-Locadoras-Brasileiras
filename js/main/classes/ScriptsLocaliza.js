@@ -178,6 +178,9 @@ export class ScriptsLocaliza {
         setTimeout(resolve, milisseconds);
       });
     }
+
+    let withoutErrorText = true;
+
     while (true) {
       let cotations = document.querySelectorAll(".box-group-car-content-box-price-value__rate-total");
 
@@ -189,6 +192,10 @@ export class ScriptsLocaliza {
 
       if (noAddButton != undefined) noAddButton.click();
 
+      if (withoutErrorText && document.body.innerText.includes("Falha ao carregar informações, por favor tente mais tarde.")) {
+        alert("Atenção, o erro não foi da extensão. Tente submeter novamente até a página de cotações aparecer.");
+        withoutErrorText = false;
+      }
       await wait(500);
     }
 

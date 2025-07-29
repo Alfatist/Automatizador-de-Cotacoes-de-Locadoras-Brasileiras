@@ -9,16 +9,12 @@ export class StorageService {
   }
 
   static async setCotationsFormatter(cotationsFormatter) {
-    console.log("Aqui");
-    console.log(cotationsFormatter);
     await chrome.storage.local.set({ cotationsFormatted: cotationsFormatter });
-    console.log("salvo com sucesso");
   }
 
   static async getCotationsFormatter() {
     let result = await chrome.storage.local.get(["cotationsFormatted"]);
-    console.log("here");
-    console.log(result);
+    console.log(result.cotationsFormatted);
     return result.cotationsFormatted;
   }
 }

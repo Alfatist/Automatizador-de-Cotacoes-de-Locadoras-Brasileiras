@@ -20,6 +20,10 @@ export class cotationsFormatter {
     P: { movida: "SY" },
     GR: { movida: "KX" },
     GY: { movida: "HZ" },
+    GH: { movida: "" },
+    VP: { movida: "" },
+    LY: { movida: "" },
+    LD: { movida: "" },
   };
 
   constructor(cotationsLocalizaArray, cotationsMovidaArray) {
@@ -30,9 +34,6 @@ export class cotationsFormatter {
     cotationsMovidaArray.forEach((cotationJson) => {
       this.cotationsMovida.push(this.formatCotationJson(cotationJson));
     });
-
-    console.log(this.cotationsLocaliza);
-    console.log(this.cotationsMovida);
   }
 
   formatCotationJson(json) {
