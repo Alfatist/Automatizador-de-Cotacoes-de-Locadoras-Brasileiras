@@ -17,4 +17,24 @@ export class StorageService {
     console.log(result.cotationsFormatted);
     return result.cotationsFormatted;
   }
+
+  /// TODO: fazer rodar mesmo sem fileSaver ter rodado no html.
+  static async downloadBlob(blob, name = "cotacoes") {
+    /*
+    await new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "/js/imports/filesaver.js";
+      script.onload = () => {
+        console.log("FileSaver.js carregado.");
+        resolve();
+      };
+      script.onerror = () => reject(new Error("Erro ao carregar FileSaver.js"));
+      document.head.appendChild(script);
+    });
+
+    */
+
+    saveAs(new Blob([blob]), `${name}.xlsx`);
+    return await StorageService.setCotationsFormatter(null);
+  }
 }

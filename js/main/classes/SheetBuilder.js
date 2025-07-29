@@ -4,8 +4,8 @@ import { cotationsFormatter } from "./cotationsFormatter.js";
 import { SheetStyles } from "./SheetStyles.js";
 
 export class SheetBuilder {
-  workbook;
-  sheet;
+  workbook = new ExcelJS.Workbook();
+  sheet = this.workbook.addWorksheet("Comparativo");
   headers = [];
   locals = { localiza: [], movida: [] };
   dates = { begin: "", end: "" };
@@ -13,8 +13,6 @@ export class SheetBuilder {
   cotations = { localiza: [], movida: [] };
 
   constructor(cotationsLocaliza, cotationsMovida, dateBegin, dateEnd) {
-    this.workbook = new ExcelJS.Workbook();
-    this.sheet = this.workbook.addWorksheet("Comparativo");
     this.cotations.localiza = cotationsLocaliza;
     this.cotations.movida = cotationsMovida;
     this.locals.localiza = cotationsLocaliza.map((d) => d.name);

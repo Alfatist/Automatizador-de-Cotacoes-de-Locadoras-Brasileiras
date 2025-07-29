@@ -10,9 +10,7 @@ export async function main() {
   if (cotationsFormatter != undefined) {
     button.innerText = "Pegar Planilha";
     return button.addEventListener("click", async (e) => {
-      let blob = await createSheetBlob(cotationsFormatter);
-      saveAs(new Blob([blob]), "cotacoes.xlsx");
-      // await StorageService.setCotationsFormatter(null);
+      await StorageService.downloadBlob(await createSheetBlob(cotationsFormatter));
       main();
     });
   }
