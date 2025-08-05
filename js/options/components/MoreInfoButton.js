@@ -1,5 +1,7 @@
+import { UtilFunctions } from "../../helpers/utilFunctions.js";
+
 export class MoreInfoButton {
   static render() {
-    return `<label class="main__link" for="shouldShowHelp" style="display: block">Mais informações</label>`;
+    return UtilFunctions.convertStringsToNodeArrays(`<label class="main__link" for="shouldShowHelp" style="display: block">Datas e Opções</label>`);
   }
 }

@@ -66,6 +66,8 @@ form button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  margin-bottom: 15px;
 }
 
 form button[type="submit"]:hover {

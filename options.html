@@ -4,7 +4,38 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./css/icons.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .form__label {
+        font-weight: bold;
+        color: #444;
+      }
+
+      .form__dates {
+        display: grid;
+        grid-row-gap: 10px;
+        align-items: center;
+        grid-template-columns: 1fr 4fr;
+      }
+
+      .form__input[type="date"] {
+        padding: 0.6rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.6rem;
+        font-size: 1rem;
+        background-color: #f9f9f9;
+        color: #333;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .form__input[type="date"]:focus {
+        border-color: #888;
+        box-shadow: 0 0 0 3px rgba(100, 100, 255, 0.2);
+        outline: none;
+      }
+    </style>
   </head>
+
   <body>
     <main class="main doc options">
       <a href="./index.html" class="doc__back_button">
@@ -22,54 +53,21 @@
         </svg>
       </a>
       <h1>Configurações</h1>
+
       <div id="options__feedback" class="options__feedback">
-        <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></i>
+        <i class="icon"
+          ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </i>
         <span class="message">Configurações salvas com sucesso!</span>
       </div>
-      <form action="#" id="options__form">
-        
-      </form>
-      <input type="checkbox" name="shouldShowHelp" id="shouldShowHelp" style="display: none" />
-
-      <label class="options__background_fade" aria-disabled="true" for="shouldShowHelp"></label>
-      <section class="options__help_container">
-        <label for="shouldShowHelp" class="help_container__leave" title="Fechar ajuda">&times;</label>
-        <h1>Opções</h1>
-
-        <details>
-          <summary>Como preencher filial?</summary>
-          <p>O campo de filial é separado em dois: empresa (esquerda) e filial (direita)</p>
-          <p>
-            Na esquerda, selecione a empresa alvo. À direita, o nome da filial de forma que seja a primeira no autocomplete do site.
-            <em>Se lembre que ele navega no site e coloca exatamente o texto informado.</em>
-          </p>
-
-          <p>
-            Por exemplo, se você quiser a agência da <em>localiza centro de duque de caxias</em>, você terá diversas opções. Mas perceba que, se o
-            campo for preenchido com: <br />
-            1. "caxias" - Será selecionado o Aeroporto Caxias do Sul <br />
-            <img src="./img/doc/caxiasInput.png" alt="Imagem demonstrando que a primeira opção no site da localiza é Caxias do Sul" />
-            <p> 2. "Duque" - Será selecionado a agência Carrefour Duque de Caxias <br />
-            <img src="./img/doc/duqueInput.png" alt="Imagem demonstrando que a primeira opção no site da localiza é Carrefour Duque de Caxias" /></p>
-            <p>
-            3. "centro Duque" - Será selecionado, por fim, o correto.
-            <img src="./img/doc/centroDuqueInput.png" alt="Imagem demonstrando que, desta vez, é a opção correta" />
-            </p>
-          </p>
-        </details>
-
-        <details>
-          <summary>Análise na planilha?</summary>
-          <p>Caso for selecionado, do lado das cotações, adicionará um campo de análise na planilha, contendo informações como grupos com maior diferença, a porcentagem e o valor.</p>
-          
-        </details>
-
-        <details>
-          <summary>Não incluir se Localiza não tiver?</summary>
-          <p>Caso for selecionado, será desconsiderado (das outras empresas) todos os grupos que a localiza não tem.</p>
-          
-        </details>
-      </section>
+      <form action="#" id="options__form"></form>
+      <div class="main__credit">
+        <span class="main__version">V0.1.1 - BETA</span>
+        <span>Feito por <a href="https://alfatist.live/pt/" target="_blank" rel="noopener noreferrer">Alfatista</a></span>
+      </div>
+      <a href="./readme.html" class="main__help_button">?</a>
     </main>
     <script type="module" src="./js/options/script.js"></script>
   </body>

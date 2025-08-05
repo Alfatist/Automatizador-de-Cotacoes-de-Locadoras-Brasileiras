@@ -208,7 +208,6 @@ export class ScriptsMovida {
       });
     }
 
-    console.log("Aqui");
     while (true) {
       let isCotationExisting = window.location.pathname.endsWith("/escolha-seu-veiculo");
 

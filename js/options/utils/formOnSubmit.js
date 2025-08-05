@@ -1,8 +1,15 @@
+import { StorageService } from "../../services.js";
 import { showfeedback } from "./showFeedback.js";
 
 export async function onSubmitForm(e) {
   try {
     e.preventDefault();
+
+    const [dateStartValue, dateEndValue] = [document.querySelector("#dateStart").value, document.querySelector("#dateEnd").value];
+
+    if (!(dateStartValue && dateEndValue)) {
+      return showfeedback("Por favor, escolha um intervalo válido de datas.", "error");
+    }
 
     let rowsInputs = document.querySelectorAll("[data-class='local']");
     let localsArrays = [];
@@ -24,7 +31,7 @@ export async function onSubmitForm(e) {
       }
     });
 
-    await chrome.storage.local.set({ filiais: localsArrays, checkboxes: arrayCheckboxesChecked });
+    await StorageService.saveFormFields(localsArrays, arrayCheckboxesChecked, dateStartValue, dateEndValue);
 
     showfeedback("Configurações salvas com sucesso!", "success");
   } catch {

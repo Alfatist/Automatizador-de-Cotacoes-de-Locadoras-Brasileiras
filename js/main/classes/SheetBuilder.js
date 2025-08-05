@@ -8,17 +8,15 @@ export class SheetBuilder {
   sheet = this.workbook.addWorksheet("Comparativo");
   headers = [];
   locals = { localiza: [], movida: [] };
-  dates = { begin: "", end: "" };
   correlationsGroup = {};
   cotations = { localiza: [], movida: [] };
 
-  constructor(cotationsLocaliza, cotationsMovida, dateBegin, dateEnd) {
+  constructor(cotationsLocaliza, cotationsMovida) {
     this.cotations.localiza = cotationsLocaliza;
     this.cotations.movida = cotationsMovida;
     this.locals.localiza = cotationsLocaliza.map((d) => d.name);
     this.locals.movida = cotationsMovida.map((d) => d.name);
-    this.dates.begin = dateBegin.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
-    this.dates.end = dateEnd.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+
     this.headers = ["Grupo Localiza", ...this.locals.localiza, ...this.locals.movida, "Grupos Movida"];
     this.correlationsGroup = cotationsFormatter.correlationsLocalizaGroups;
   }
@@ -27,8 +25,7 @@ export class SheetBuilder {
     return await this.workbook.xlsx.writeBuffer();
   }
 
-  buildTitle() {
-    const title = `Cotações do dia ${this.dates.begin} - ${this.dates.end}`;
+  buildTitle(title) {
     const titleRow = this.sheet.addRow([title]);
 
     const headersLength = this.headers.length;

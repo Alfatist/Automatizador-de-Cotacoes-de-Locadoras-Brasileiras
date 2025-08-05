@@ -45,11 +45,11 @@ async function scriptPrincipal(message, sender, sendResponse) {
     if (targets == undefined) return;
     let cotationsLocaliza = [];
     let cotationsMovida = [];
-
+    let dates = await StorageService.getDateInterval();
     for (let i = 0; i < targets.length; i++) {
       let target = targets[i];
       if (target["empresa"].toLowerCase() == "localiza") {
-        cotationsLocaliza.push(await getCotationLocaliza(target["filial"]));
+        cotationsLocaliza.push(await getCotationLocaliza(target["filial"], dates.begin, dates.end));
       }
       if (target["empresa"].toLowerCase() == "movida") {
         cotationsMovida.push(await getCotationMovida(target["filial"]));

@@ -1,20 +1,21 @@
+import { DateInterval } from "../../core/classes/dateInterval.js";
 import { PageLocaliza } from "../classes/PageLocaliza.js";
 
-export default async function getCotationLocaliza(location, nickname = "") {
+export default async function getCotationLocaliza(location, beginDate, endDate, nickname = "") {
   if (nickname.trim() == "") nickname = location;
+  let beginMonthAndDaysDistance = DateInterval.monthsAndDaysAfter(beginDate);
+  let endMonthAndDaysDistance = DateInterval.monthsAndDaysAfter(endDate, beginDate);
   const page = new PageLocaliza();
 
   await page.openNew();
 
   await page.fillLocation(location);
 
-  await page.checkFirstDate();
+  await page.tapDate(beginMonthAndDaysDistance.months, beginMonthAndDaysDistance.days);
 
   await page.checkFirstHour();
 
-  await page.checkSecondDate();
-
-  await page.checkFirstHour();
+  await page.tapDate(endMonthAndDaysDistance.months, endMonthAndDaysDistance.days);
 
   await page.tapSubmitButton();
 

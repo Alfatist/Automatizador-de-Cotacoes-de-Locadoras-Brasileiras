@@ -1,3 +1,5 @@
+import { UtilFunctions } from "../../helpers/utilFunctions.js";
+
 export class LocalRow {
   static _getEmptyRow(id) {
     return `<div class="local" id="row${id}" data-class="local" data-number="${id}">
@@ -22,14 +24,14 @@ export class LocalRow {
     return element;
   }
 
-  static render(filiais) {
-    if (filiais == undefined || filiais.length == 0) return this._getEmptyRow(1);
+  static renders(filiais) {
+    if (filiais == undefined || filiais.length == 0) return [UtilFunctions.convertStringsToNodeArrays(this._getEmptyRow(1))];
 
     let id = 1;
-    let localRows = "";
+    let localRows = [];
 
     filiais.forEach((localRow) => {
-      localRows += `<div class="local" id="row${id}" data-class="local" data-number="${id}">
+      localRows.push(`<div class="local" id="row${id}" data-class="local" data-number="${id}">
           <select name="row${id}__select" id="select" title="Selecione a empresa">
             <option value="localiza" title="Localiza" ${localRow["empresa"] == "localiza" ? "checked" : ""} >&#xe900;</option>
             <option value="movida" title="Movida" ${localRow["empresa"] == "movida" ? "selected" : ""}>&#xe903;</option>
@@ -38,12 +40,12 @@ export class LocalRow {
           <input type="text" placeholder="Filial" id="row${id}__input" data-class="local__input" value="${localRow["filial"]}" ${
         id == 1 ? "required" : null
       } />
-        </div>`;
+        </div>`);
       ++id;
     });
 
-    localRows += this._getEmptyRow(id);
+    localRows.push(this._getEmptyRow(id));
 
-    return localRows;
+    return UtilFunctions.convertStringsToNodeArrays(localRows);
   }
 }

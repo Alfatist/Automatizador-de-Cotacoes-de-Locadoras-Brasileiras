@@ -9,6 +9,7 @@ export class PageLocaliza {
 
     this.isOpen = true;
     this.id = result.id;
+
     return result;
   }
 
@@ -22,13 +23,14 @@ export class PageLocaliza {
     console.log("Preenchido local de retirada!");
   }
 
-  async checkFirstDate() {
+  async tapDate(monthsLater, daysLater) {
     await chrome.scripting.executeScript({
       target: { tabId: this.id },
-      func: ScriptsLocaliza.tapFirstDate,
+      func: ScriptsLocaliza.tapDate,
+      args: [monthsLater, daysLater],
     });
 
-    console.log("Primeira data escolhida com sucesso!");
+    console.log("Data escolhida com sucesso!");
   }
 
   async checkFirstHour() {
@@ -38,15 +40,6 @@ export class PageLocaliza {
     });
 
     console.log("Primeira hora escolhida com sucesso!");
-  }
-
-  async checkSecondDate() {
-    await chrome.scripting.executeScript({
-      target: { tabId: this.id },
-      func: ScriptsLocaliza.tapSecondDate,
-    });
-
-    console.log("Segunda data escolhida com sucesso!");
   }
 
   async tapSubmitButton() {

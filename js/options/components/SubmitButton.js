@@ -3,6 +3,6 @@ export class SubmitButton {
     let submit = document.createElement("button");
     submit.type = "submit";
     submit.textContent = "Salvar configurações";
-    return submit.outerHTML;
+    return submit;
   }
 }

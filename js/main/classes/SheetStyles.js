@@ -9,6 +9,7 @@ export class SheetStyles {
     },
     alignment: { horizontal: "center", vertical: "middle" },
   };
+
   static headerCell = {
     font: { bold: true },
     fill: {

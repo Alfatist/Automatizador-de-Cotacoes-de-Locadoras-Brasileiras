@@ -44,7 +44,7 @@ export class ScriptsLocaliza {
     return;
   };
 
-  static tapFirstDate = async () => {
+  static tapDate = async (monthsLater, daysLater) => {
     function wait(milisseconds) {
       return new Promise((resolve) => {
         setTimeout(resolve, milisseconds);
@@ -61,6 +61,18 @@ export class ScriptsLocaliza {
       return element;
     }
 
+    async function ensureQuerySelectorAll(query) {
+      let element;
+      console.log("Estou ao menos chegando aqui!!!");
+      while (element == undefined || element?.length == 0) {
+        element = document.querySelectorAll(query);
+        console.log(element);
+        await wait(500);
+      }
+
+      return element;
+    }
+
     async function ensureQuerySelectorEmpty(query) {
       let element = document.querySelector(query);
       while (element != undefined) {
@@ -71,10 +83,28 @@ export class ScriptsLocaliza {
       return element;
     }
 
-    const firstDateSelector = ".mat-calendar-body-cell.mat-calendar-body-active";
-    let firstDate = await ensureQuerySelector(firstDateSelector);
+    await ensureQuerySelector(".mat-calendar-table");
 
-    firstDate.click();
+    const nextMonthButtonSelector = ".mat-calendar-next-button";
+    const daysButton = ".mat-calendar-body-cell:not([aria-disabled='true'])";
+
+    console.log(monthsLater);
+    console.log("OIIIIII");
+    for (let i = 0; i < monthsLater; i++) {
+      let nextMonthButton = await ensureQuerySelector(nextMonthButtonSelector);
+      console.log(nextMonthButton);
+      nextMonthButton.click();
+      await wait(500);
+    }
+
+    let days = await ensureQuerySelectorAll(daysButton);
+
+    console.log(days);
+    console.log(daysLater);
+    console.log(days[daysLater]);
+    console.log("aquiiii");
+
+    days[daysLater].click();
 
     await ensureQuerySelectorEmpty(firstDateSelector);
   };
@@ -115,41 +145,6 @@ export class ScriptsLocaliza {
     await ensureQuerySelectorEmpty("mat-option:not([aria-disabled='true'])");
   };
 
-  static tapSecondDate = async () => {
-    function wait(milisseconds) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, milisseconds);
-      });
-    }
-
-    async function ensureQuerySelector(query) {
-      let element;
-      while (element == undefined) {
-        element = document.querySelectorAll(query)[1];
-        await wait(500);
-      }
-
-      return element;
-    }
-
-    async function ensureQuerySelectorEmpty(query) {
-      let element = document.querySelector(query);
-      while (element != undefined) {
-        await wait(500);
-        element = document.querySelector(query);
-      }
-
-      return element;
-    }
-
-    const firstDateSelector = ".mat-calendar-body-cell:not([aria-disabled='true'])";
-    let firstDate = await ensureQuerySelector(firstDateSelector);
-
-    firstDate.click();
-
-    await ensureQuerySelectorEmpty(firstDateSelector);
-  };
-
   static tapSubmitButton = async () => {
     function wait(milisseconds) {
       return new Promise((resolve) => {
@@ -183,9 +178,15 @@ export class ScriptsLocaliza {
 
     while (true) {
       let cotations = document.querySelectorAll(".box-group-car-content-box-price-value__rate-total");
+      let groups = document.querySelectorAll(".box-group-car-content");
 
-      let isCotationExisting = cotations?.length > 1;
+      let isCotationExisting = cotations != undefined && groups?.length > 1;
+      const hasVerticalScroll = document.documentElement.scrollHeight > window.innerHeight;
 
+      if (!hasVerticalScroll) {
+        let closeButton = document.querySelector('[data-testid="btn-close"]');
+        closeButton?.click();
+      }
       if (isCotationExisting) break;
 
       let noAddButton = document.querySelector(".modal-two-day-incentive__buttons button");
