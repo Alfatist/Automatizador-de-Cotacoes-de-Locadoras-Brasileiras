@@ -23,13 +23,14 @@ export class PageMovida {
     console.log("Preenchido local de retirada!");
   }
 
-  async checkFirstDate() {
+  async tapDate(monthsLater, daysLater, isSecond = false) {
     await chrome.scripting.executeScript({
       target: { tabId: this.id },
-      func: ScriptsMovida.tapFirstDate,
+      func: ScriptsMovida.tapDate,
+      args: [monthsLater, daysLater, isSecond],
     });
 
-    console.log("Primeira data escolhida com sucesso!");
+    console.log("Data escolhida com sucesso!");
   }
 
   async checkFirstHour() {
@@ -39,15 +40,6 @@ export class PageMovida {
     });
 
     console.log("Primeira hora escolhida com sucesso!");
-  }
-
-  async checkSecondDate() {
-    await chrome.scripting.executeScript({
-      target: { tabId: this.id },
-      func: ScriptsMovida.tapSecondDate,
-    });
-
-    console.log("Segunda data escolhida com sucesso!");
   }
 
   async tapSubmitButton() {
@@ -62,7 +54,7 @@ export class PageMovida {
   async ensurePageCotationShowing() {
     console.log("Executando ensureCotations");
 
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
       target: { tabId: this.id },
       func: ScriptsMovida.ensureCotationsPage,
     });

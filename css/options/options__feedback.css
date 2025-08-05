@@ -19,7 +19,7 @@
 }
 
 .options__feedback.show {
-  z-index: 999;
+  z-index: 1000;
   opacity: 1;
   pointer-events: auto;
 }
@@ -30,6 +30,12 @@
 
 .options__feedback.error {
   background-color: #dc3545;
+}
+
+.options__feedback.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
 }
 
 .options__feedback svg {

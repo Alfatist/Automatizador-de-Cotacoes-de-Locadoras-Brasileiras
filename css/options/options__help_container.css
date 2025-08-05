@@ -12,7 +12,7 @@
   background-color: #ece9e9;
   display: none;
   overflow: auto;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #shouldShowHelp:checked ~ .options__help_container {

@@ -3,6 +3,7 @@ export class DateInterval {
   beginISOString;
   end;
   endISOString;
+  isMonthly;
 
   constructor(beginDateOrISO, endDateOrISO) {
     let beginISO = beginDateOrISO;
@@ -21,7 +22,23 @@ export class DateInterval {
     this.begin = DateInterval.removeTimezoneOffset(new Date(beginDateOrISO));
     this.end = DateInterval.removeTimezoneOffset(new Date(endDateOrISO));
 
+    this.isMonthly = DateInterval.isIntervalMonthly(this.begin, this.end);
+
     this.validateInterval();
+  }
+
+  static isIntervalMonthly(date1, date2) {
+    const dayMs = 1000 * 60 * 60 * 24;
+
+    // Garante que estamos comparando datas sem horas
+    const d1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
+    const d2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+    const differenceMs = Math.abs(d2 - d1);
+    const daysDifference = differenceMs / dayMs;
+    console.log(daysDifference);
+
+    return daysDifference >= 30;
   }
 
   static removeTimezoneOffset(date) {
@@ -43,7 +60,7 @@ export class DateInterval {
       this.end = tomorrow;
     }
     if (this.begin > this.end) {
-      throw new Error("Date begin bigger than date end");
+      this.end.setDate(this.begin.getDate() + 1);
     }
 
     return;

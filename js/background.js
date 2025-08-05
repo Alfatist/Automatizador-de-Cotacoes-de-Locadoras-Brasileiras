@@ -52,7 +52,7 @@ async function scriptPrincipal(message, sender, sendResponse) {
         cotationsLocaliza.push(await getCotationLocaliza(target["filial"], dates.begin, dates.end));
       }
       if (target["empresa"].toLowerCase() == "movida") {
-        cotationsMovida.push(await getCotationMovida(target["filial"]));
+        cotationsMovida.push(await getCotationMovida(target["filial"], dates.begin, dates.end));
       }
     }
 

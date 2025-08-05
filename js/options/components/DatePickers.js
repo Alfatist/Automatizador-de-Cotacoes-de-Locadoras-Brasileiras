@@ -16,7 +16,7 @@ export class DatePickers {
     const dateForm = `
     <div class="form__dates">
         <label for="dateStart" class="form__label">De:</label> <input type="date" id="dateStart" name="dateStart"
-          class="form__input" min="${beginDate}" value="${beginDate}" aria-required="true" />
+          class="form__input" min="${DateInterval.getTodayAndTomorrowISO().today}" value="${beginDate}" aria-required="true" />
         <label for="dateEnd" class="form__label">Para:</label> <input type="date" id="dateEnd" name="dateEnd"
           class="form__input" min="${beginDate}" value="${tomorrowDate}" aria-required="true" />
     </div>`;
@@ -34,6 +34,8 @@ export class DatePickers {
     const firstDateInput = section.querySelector("#dateStart");
     const lastDateInput = section.querySelector("#dateEnd");
     DatePickers.addDateInputOnChange(firstDateInput, lastDateInput);
+
+    section.innerHTML += `<button type="submit" style="margin-top: 16px; margin-bottom: 0">Salvar Configurações</button>;`;
     return [...elements, section];
   }
 
@@ -42,6 +44,18 @@ export class DatePickers {
       let dateInterval = new DateInterval(firstDateInput.value, lastDateInput.value);
       lastDateInput.value = dateInterval.endISOString;
       lastDateInput.min = dateInterval.beginISOString;
+      console.log(dateInterval.isMonthly);
+      if (dateInterval.isMonthly) {
+        showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
+      }
+    });
+
+    lastDateInput.addEventListener("change", (e) => {
+      let dateInterval = new DateInterval(firstDateInput.value, lastDateInput.value);
+      console.log(dateInterval.isMonthly);
+      if (dateInterval.isMonthly) {
+        showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
+      }
     });
   }
 }

@@ -99,11 +99,6 @@ export class ScriptsLocaliza {
 
     let days = await ensureQuerySelectorAll(daysButton);
 
-    console.log(days);
-    console.log(daysLater);
-    console.log(days[daysLater]);
-    console.log("aquiiii");
-
     days[daysLater].click();
 
     await ensureQuerySelectorEmpty(firstDateSelector);
