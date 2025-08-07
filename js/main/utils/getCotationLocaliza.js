@@ -2,6 +2,7 @@ import { DateInterval } from "../../core/classes/dateInterval.js";
 import { PageLocaliza } from "../classes/PageLocaliza.js";
 
 export default async function getCotationLocaliza(location, beginDate, endDate, nickname = "") {
+  location = location.trim();
   if (nickname.trim() == "") nickname = location;
   let beginMonthAndDaysDistance = DateInterval.monthsAndDaysAfter(beginDate);
   let endMonthAndDaysDistance = DateInterval.monthsAndDaysAfter(endDate, beginDate);

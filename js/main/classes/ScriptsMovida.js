@@ -18,6 +18,7 @@ export class ScriptsMovida {
 
     async function ensureClick(query, root = document) {
       let element = root.querySelector(query);
+      if (element == null) alert("Atenção! Não existe essa filial.");
       while (element != undefined) {
         const rect = element.getBoundingClientRect();
         element.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, clientX: rect.left, clientY: rect.top }));
@@ -29,7 +30,6 @@ export class ScriptsMovida {
         await wait(500);
         element = root.querySelector(query, shadowContainer);
       }
-
       return element;
     }
 

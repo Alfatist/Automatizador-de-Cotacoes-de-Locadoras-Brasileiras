@@ -12,14 +12,16 @@ export class LocalRow {
         </div>`;
   }
 
-  static buildEmpty(id, listenerOnInput) {
+  static buildEmpty(id, listenerOnInput, listenerOnBlur) {
     let newRow = this._getEmptyRow(id);
 
     const temp = document.createElement("div");
     temp.innerHTML = newRow;
     let element = temp.firstElementChild;
 
-    element.querySelector("[data-class='local__input'").addEventListener("input", listenerOnInput);
+    const input = element.querySelector("[data-class='local__input'");
+    input.addEventListener("input", listenerOnInput);
+    input.addEventListener("blur", listenerOnBlur);
 
     return element;
   }

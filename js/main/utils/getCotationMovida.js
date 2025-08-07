@@ -2,6 +2,7 @@ import { DateInterval } from "../../core/classes/dateInterval.js";
 import { PageMovida } from "../classes/PageMovida.js";
 
 export default async function getCotationMovida(location, beginDate, endDate, nickname = "") {
+  location = location.trim();
   if (nickname.trim() == "") nickname = location;
 
   let beginMonthAndDaysDistance = DateInterval.monthsAndDaysAfter(beginDate);
