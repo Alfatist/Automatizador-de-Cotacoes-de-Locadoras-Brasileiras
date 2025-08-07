@@ -36,7 +36,7 @@ export class PageLocaliza {
   async checkFirstHour() {
     await chrome.scripting.executeScript({
       target: { tabId: this.id },
-      func: ScriptsLocaliza.tapFirstHour,
+      func: ScriptsLocaliza.tapLastHour,
     });
 
     console.log("Primeira hora escolhida com sucesso!");

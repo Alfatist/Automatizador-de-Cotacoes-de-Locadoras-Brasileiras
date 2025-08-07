@@ -36,7 +36,7 @@ export class PageMovida {
   async checkFirstHour() {
     await chrome.scripting.executeScript({
       target: { tabId: this.id },
-      func: ScriptsMovida.tapFirstHour,
+      func: ScriptsMovida.tapLastHour,
     });
 
     console.log("Primeira hora escolhida com sucesso!");

@@ -116,7 +116,7 @@ export class ScriptsMovida {
     await ensureQuerySelectorEmpty(shadowContainer, shadowApp);
   };
 
-  static tapFirstHour = async () => {
+  static tapLastHour = async () => {
     function wait(milisseconds) {
       return new Promise((resolve) => {
         setTimeout(resolve, milisseconds);
@@ -143,14 +143,31 @@ export class ScriptsMovida {
       return element;
     }
 
+    async function ensureQuerySelectorAll(query, root = document) {
+      let element;
+      while (element == undefined) {
+        element = root.querySelectorAll(query);
+
+        console.log(element);
+        console.log("pega");
+        if (element instanceof NodeList && element.length == 0) element = undefined;
+
+        await wait(500);
+      }
+
+      return element;
+    }
+
     let shadowApp = await ensureQuerySelector("app-motor-busca");
     shadowApp = shadowApp.shadowRoot;
 
     let shadowContainer = await ensureQuerySelector("app-custom-select", shadowApp);
     shadowContainer = shadowContainer.shadowRoot;
 
-    let elemento = await ensureQuerySelector(".option + .option + .option", shadowContainer);
-    elemento.click();
+    const hours = await ensureQuerySelectorAll(".option", shadowContainer);
+    const lastHour = hours[hours.length - 1];
+
+    lastHour.click();
 
     await ensureQuerySelectorEmpty(shadowContainer, shadowApp);
   };

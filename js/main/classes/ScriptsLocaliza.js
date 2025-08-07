@@ -104,38 +104,46 @@ export class ScriptsLocaliza {
     await ensureQuerySelectorEmpty(firstDateSelector);
   };
 
-  static tapFirstHour = async () => {
+  static tapLastHour = async () => {
     function wait(milisseconds) {
       return new Promise((resolve) => {
         setTimeout(resolve, milisseconds);
       });
     }
 
-    async function ensureQuerySelector(query) {
-      let element;
-      while (element == undefined) {
-        element = document.querySelector(query);
-
-        await wait(500);
-      }
-
-      return element;
-    }
-
     async function ensureQuerySelectorEmpty(query) {
       let element = document.querySelector(query);
       while (element != undefined) {
-        await wait(500);
         element = document.querySelector(query);
+
+        await wait(500);
       }
 
       return element;
     }
 
-    let isAlreadyFilled = document.querySelector("#mat-select-value-3 .mat-mdc-select-min-line")?.innerText[0] != undefined;
+    async function ensureQuerySelectorAll(query) {
+      let element;
+      while (element == undefined) {
+        element = document.querySelectorAll(query);
+
+        console.log(element);
+        console.log("pega");
+        if (element instanceof NodeList && element.length == 0) element = undefined;
+
+        await wait(500);
+      }
+
+      return element;
+    }
+
+    const isAlreadyFilled = document.querySelector("#mat-select-value-3 .mat-mdc-select-min-line")?.innerText[0] != undefined;
     if (isAlreadyFilled) return;
-    let elemento = await ensureQuerySelector("mat-option:not([aria-disabled='true'])");
-    elemento.click();
+    const hours = await ensureQuerySelectorAll("mat-option:not([aria-disabled='true'])");
+
+    console.log(hours);
+    const lastHour = hours[hours.length - 1];
+    lastHour.click();
 
     await ensureQuerySelectorEmpty("mat-option:not([aria-disabled='true'])");
   };
