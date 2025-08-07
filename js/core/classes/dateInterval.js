@@ -22,9 +22,8 @@ export class DateInterval {
     this.begin = DateInterval.removeTimezoneOffset(new Date(beginDateOrISO));
     this.end = DateInterval.removeTimezoneOffset(new Date(endDateOrISO));
 
-    this.isMonthly = DateInterval.isIntervalMonthly(this.begin, this.end);
-
     this.validateInterval();
+    this.isMonthly = DateInterval.isIntervalMonthly(this.begin, this.end);
   }
 
   static isIntervalMonthly(date1, date2) {
@@ -60,7 +59,9 @@ export class DateInterval {
       this.end = tomorrow;
     }
     if (this.begin > this.end) {
-      this.end.setDate(this.begin.getDate() + 1);
+      this.end = new Date(this.begin);
+      this.end.setDate(this.end.getDate() + 1);
+      this.endISOString = DateInterval.getISODateWithOffset(this.end);
     }
 
     return;

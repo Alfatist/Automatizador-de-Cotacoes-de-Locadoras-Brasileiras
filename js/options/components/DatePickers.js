@@ -1,6 +1,7 @@
 import { showfeedback } from "../utils/showFeedback.js";
 import { UtilFunctions } from "../../helpers/utilFunctions.js";
 import { DateInterval } from "../../core/classes/dateInterval.js";
+import { SubmitButton } from "./SubmitButton.js";
 
 export class DatePickers {
   static renders(beginDateISO, endDateISO) {
@@ -35,7 +36,10 @@ export class DatePickers {
     const lastDateInput = section.querySelector("#dateEnd");
     DatePickers.addDateInputOnChange(firstDateInput, lastDateInput);
 
-    section.innerHTML += `<button type="submit" style="margin-top: 16px; margin-bottom: 0">Salvar Configurações</button>;`;
+    const button = SubmitButton.render();
+    button.style.marginTop = "16px";
+    button.style.marginBottom = "0";
+    section.appendChild(button);
     return [...elements, section];
   }
 
@@ -44,18 +48,14 @@ export class DatePickers {
       let dateInterval = new DateInterval(firstDateInput.value, lastDateInput.value);
       lastDateInput.value = dateInterval.endISOString;
       lastDateInput.min = dateInterval.beginISOString;
-      console.log(dateInterval.isMonthly);
-      if (dateInterval.isMonthly) {
-        showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
-      }
+
+      if (dateInterval.isMonthly) showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
     });
 
     lastDateInput.addEventListener("change", (e) => {
       let dateInterval = new DateInterval(firstDateInput.value, lastDateInput.value);
-      console.log(dateInterval.isMonthly);
-      if (dateInterval.isMonthly) {
-        showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
-      }
+
+      if (dateInterval.isMonthly) showfeedback("Aluguel Mensal MOVIDA não funcionando.", "warning");
     });
   }
 }
