@@ -77,7 +77,7 @@ export class ScriptsMovida {
       let element;
       while (element == undefined || element?.length == 0) {
         element = root.querySelectorAll(query);
-        console.log(element);
+
         await wait(500);
       }
 
@@ -98,8 +98,7 @@ export class ScriptsMovida {
     shadowApp = shadowApp.shadowRoot;
 
     let shadowContainer = await ensureQuerySelector(isSecond ? "app-calendar[name='data_devolucao']" : "app-calendar", shadowApp);
-    console.log(shadowContainer);
-    console.log("EIIIIIIIIII");
+
     shadowContainer = shadowContainer.shadowRoot;
 
     const nextMonthButtonSelector = ".month-year + button";
@@ -148,8 +147,6 @@ export class ScriptsMovida {
       while (element == undefined) {
         element = root.querySelectorAll(query);
 
-        console.log(element);
-        console.log("pega");
         if (element instanceof NodeList && element.length == 0) element = undefined;
 
         await wait(500);
@@ -206,8 +203,7 @@ export class ScriptsMovida {
 
     while (true) {
       let isCotationExisting = window.location.pathname.endsWith("/escolha-seu-veiculo");
-      console.log(isCotationExisting);
-      console.log("OIII");
+
       if (isCotationExisting) break;
 
       let noAddButton = document.querySelector(".mov-modal__buttons>button");

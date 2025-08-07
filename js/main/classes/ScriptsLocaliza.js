@@ -10,24 +10,12 @@ export class ScriptsLocaliza {
       let element;
       while (element == undefined) {
         element = document.querySelector(query);
+
         await wait(500);
       }
 
       return element;
     }
-
-    let containerInput = await ensureQuerySelector("body");
-
-    const observer = new MutationObserver(async () => {
-      let firstLocalSuggested = await ensureQuerySelector(".places-list__item__column");
-      firstLocalSuggested.click();
-      return;
-    });
-
-    observer.observe(containerInput, {
-      childList: true,
-      subtree: true,
-    });
 
     let input = await ensureQuerySelector("#mat-input-2");
 
@@ -40,6 +28,9 @@ export class ScriptsLocaliza {
     input.dispatchEvent(new Event("input", { bubbles: true }));
     input.dispatchEvent(new Event("change", { bubbles: true }));
     input.dispatchEvent(new KeyboardEvent("keydown", { key: "R", bubbles: true }));
+
+    let firstAutoComplete = await ensureQuerySelector(".places-list__item__column");
+    firstAutoComplete.click();
 
     return;
   };
@@ -63,10 +54,10 @@ export class ScriptsLocaliza {
 
     async function ensureQuerySelectorAll(query) {
       let element;
-      console.log("Estou ao menos chegando aqui!!!");
+
       while (element == undefined || element?.length == 0) {
         element = document.querySelectorAll(query);
-        console.log(element);
+
         await wait(500);
       }
 
@@ -88,11 +79,8 @@ export class ScriptsLocaliza {
     const nextMonthButtonSelector = ".mat-calendar-next-button";
     const daysButton = ".mat-calendar-body-cell:not([aria-disabled='true'])";
 
-    console.log(monthsLater);
-    console.log("OIIIIII");
     for (let i = 0; i < monthsLater; i++) {
       let nextMonthButton = await ensureQuerySelector(nextMonthButtonSelector);
-      console.log(nextMonthButton);
       nextMonthButton.click();
       await wait(500);
     }
@@ -127,8 +115,6 @@ export class ScriptsLocaliza {
       while (element == undefined) {
         element = document.querySelectorAll(query);
 
-        console.log(element);
-        console.log("pega");
         if (element instanceof NodeList && element.length == 0) element = undefined;
 
         await wait(500);
@@ -141,7 +127,6 @@ export class ScriptsLocaliza {
     if (isAlreadyFilled) return;
     const hours = await ensureQuerySelectorAll("mat-option:not([aria-disabled='true'])");
 
-    console.log(hours);
     const lastHour = hours[hours.length - 1];
     lastHour.click();
 

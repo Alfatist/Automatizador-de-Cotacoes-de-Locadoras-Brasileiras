@@ -7,9 +7,8 @@ import { onSubmitForm } from "./formOnSubmit.js";
 
 export async function startForm(form) {
   const result = await StorageService.getOptions();
-  console.log(result);
+
   let [filiais, checkboxes, beginDateISO, endDateISO] = [result.filiais, result.checkboxes, result.beginDateISO, result.endDateISO];
-  console.log(filiais);
 
   LocalRow.renders(filiais).forEach((el) => form.appendChild(el));
 

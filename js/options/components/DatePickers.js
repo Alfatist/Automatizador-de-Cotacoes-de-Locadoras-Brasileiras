@@ -7,7 +7,6 @@ export class DatePickers {
   static renders(beginDateISO, endDateISO) {
     const beginDate = beginDateISO ?? DateInterval.getTodayAndTomorrowISO().today;
     const tomorrowDate = endDateISO ?? DateInterval.getTodayAndTomorrowISO().tomorrow;
-    console.log(beginDate);
 
     const firstElements = [
       `<input type="checkbox" name="shouldShowHelp" id="shouldShowHelp" style="display: none" />`,

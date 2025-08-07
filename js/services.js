@@ -2,7 +2,6 @@ import { DateInterval } from "./core/classes/dateInterval.js";
 
 export class StorageService {
   static async saveFormFields(filiaisArray, checkboxesArray, beginDateISO, endDateISO) {
-    console.log("salvei");
     await chrome.storage.local.set({ filiais: filiaisArray, checkboxes: checkboxesArray, beginDateISO: beginDateISO, endDateISO: endDateISO });
   }
 

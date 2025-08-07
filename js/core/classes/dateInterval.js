@@ -35,7 +35,6 @@ export class DateInterval {
 
     const differenceMs = Math.abs(d2 - d1);
     const daysDifference = differenceMs / dayMs;
-    console.log(daysDifference);
 
     return daysDifference >= 30;
   }
